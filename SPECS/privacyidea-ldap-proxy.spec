@@ -37,16 +37,17 @@ BuildRequires: libxml2-devel, freetype-devel, python-devel, libxslt-devel, zlib-
 rm -fr %{root_dir}
 virtualenv %{root_dir}
 source %{root_dir}/bin/activate
-cd $RPM_BUILD_ROOT
+
+rm -fr privacyidea-ldap-proxy
 git clone https://github.com/NetKnights-GmbH/privacyidea-ldap-proxy.git 
+cd /privacyidea-ldap-proxy
 git checkout v%{version}
-cd $RPM_BUILD_ROOT/privacyidea-ldap-proxy
 pip install -r requirements.txt
 pip install .
 
 %install
 mkdir -p $RPM_BUILD_ROOT/opt/
-cp -r /opt/privacyidea $RPM_BUILD_ROOT/opt/
+cp -r /opt/privacyidea-ldap-proxy $RPM_BUILD_ROOT/opt/
 
 %clean
 rm -rf $RPM_BUILD_ROOT

@@ -5,7 +5,7 @@ info:
 	@echo "clean"
 
 buildrpm:
-	LP_VERSION=${LP_VERSION} rpmbuild -ba SPECS/privacyidea-ldap-proxy.spec
+	LP_VERSION=${LP_VERSION} rpmbuild --define "_topdir `pwd`" -ba SPECS/privacyidea-ldap-proxy.spec
 
 repo:
 	mkdir -p repository/centos/7/
