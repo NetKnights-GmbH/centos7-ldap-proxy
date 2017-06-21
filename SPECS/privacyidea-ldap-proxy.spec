@@ -1,6 +1,6 @@
 %define source_name privacyIDEA-LDAP-Proxy
 %define name privacyidea-ldap-proxy
-%define version %{getenv:LP_VERSION} 
+%define version %{getenv:LP_VERSION}
 %define unmangled_version %{version}
 %define unmangled_version %{version}
 %define release 1
@@ -37,10 +37,9 @@ BuildRequires: libxml2-devel, freetype-devel, python-devel, libxslt-devel, zlib-
 rm -fr %{root_dir}
 virtualenv %{root_dir}
 source %{root_dir}/bin/activate
-
 rm -fr privacyidea-ldap-proxy
-git clone https://github.com/NetKnights-GmbH/privacyidea-ldap-proxy.git 
-cd /privacyidea-ldap-proxy
+git clone https://github.com/NetKnights-GmbH/privacyidea-ldap-proxy.git
+cd privacyidea-ldap-proxy
 git checkout v%{version}
 pip install -r requirements.txt
 pip install .
@@ -56,6 +55,18 @@ rm -rf $RPM_BUILD_ROOT
 %{root_dir}
 
 %changelog
-* Tue Jun 20 2017 Cornelius Kölbel <cornelius.koelbel@netknights.it> 2.0
+
+* Wed Jun 21 2017 Cornelius Kölbel <cornelius.koelbel@netknights.it> 0.2
+
+    * Add the app cache which stores the association of user DNs with app markers (#13)
+    * Implement a realm mapper which assigns privacyIDEA realms to authentication requests
+      based on a strategy, the default being the "static" realm mapper strategy (#13)
+    * Add the "app-cache" realm mapper strategy to assign privacyIDEA realms
+      based on app markers retrieved from the app cache (#13)
+    * Improve error reporting in some corner cases (#17)
+
+
+* Tue Jun 20 2017 Cornelius Kölbel <cornelius.koelbel@netknights.it> 0.1
 
   * initial release
+                                      
