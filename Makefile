@@ -1,4 +1,4 @@
-LP_VERSION=0.2
+LP_VERSION=0.5
 info:
 	@echo "buildrpm"
 	@echo "repo"
